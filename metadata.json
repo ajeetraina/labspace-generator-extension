@@ -1,0 +1,23 @@
+{
+  "name": "GitHub Labspace Generator",
+  "version": "1.0.0",
+  "description": "One-click labspace generation from GitHub repositories with broad language support",
+  "publisher": "YourName",
+  "icon": "icon.svg",
+  "ui": {
+    "dashboard-tab": {
+      "title": "Labspace Generator",
+      "root": "/ui",
+      "src": "dist/index.html"
+    }
+  },
+  "vm": {
+    "image": "labspace-generator:latest",
+    "port": 3001
+  },
+  "host": {
+    "binds": [
+      "/var/run/docker.sock:/var/run/docker.sock"
+    ]
+  }
+}
