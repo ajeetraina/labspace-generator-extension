@@ -7,9 +7,11 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --only=production
 
-# Copy source code
+# Copy source code and build files
 COPY src/ ./src/
-COPY public/ ./public/
+COPY index.html ./
+COPY vite.config.js ./
+COPY tailwind.config.js ./
 
 # Build the React frontend
 RUN npm run build
@@ -28,7 +30,6 @@ COPY --from=builder /app/dist ./dist
 
 # Copy backend source
 COPY src/server.js ./
-COPY src/templates/ ./templates/
 
 # Create necessary directories
 RUN mkdir -p /tmp && chmod 777 /tmp
